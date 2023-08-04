@@ -1,0 +1,27 @@
+class Solution(object):
+    def search(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: int
+        """
+        l, r = 0, len(nums) - 1
+
+        while l <= r:
+            m = l + ((r - l) // 2)
+
+            if nums[m] > target:
+                r = m - 1
+            elif nums[m] < target:
+                l = m + 1
+            else:
+                return m
+        return -1
+
+
+if __name__ == "__main__":
+    s = Solution()
+    nums = [-1, 0, 3, 5, 7, 9]
+    target = 5
+    position = s.search(nums=nums, target=target)
+    print(position)
